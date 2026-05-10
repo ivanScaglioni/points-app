@@ -1,0 +1,219 @@
+@import 'tailwindcss' source('../');
+
+/* =========================================================
+  THEME TOKENS
+   ========================================================= */
+
+@theme {
+  /* ---------- COLORS ---------- */
+  --color-background: oklch(0.98 0.005 240);
+  --color-foreground: oklch(0.2 0.01 240);
+
+
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.2 0.01 240);
+
+  --color-primary: oklch(0.62 0.22 260);
+  --color-primary-foreground: oklch(0.98 0.01 240);
+
+  --color-secondary: oklch(0.92 0.015 250);
+  --color-secondary-foreground: oklch(0.28 0.02 250);
+
+  --color-muted: oklch(0.95 0.01 250);
+  --color-muted-foreground: oklch(0.5 0.02 250);
+
+  --color-accent: oklch(0.9 0.04 250);
+  --color-accent-foreground: oklch(0.24 0.02 250);
+
+  --color-border: oklch(0.9 0.01 250);
+  --color-input: oklch(0.9 0.01 250);
+  --color-ring: oklch(0.62 0.22 260);
+
+  --color-success: oklch(0.7 0.16 145);
+  --color-warning: oklch(0.8 0.16 85);
+  --color-destructive: oklch(0.63 0.24 25);
+
+  /* ---------- RADIUS ---------- */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-soft: 0 2px 10px rgb(0 0 0 / 0.04);
+  --shadow-medium: 0 8px 30px rgb(0 0 0 / 0.08);
+
+  /* ---------- SPACING ---------- */
+  --container-padding: 1rem;
+
+  /* ---------- ANIMATIONS ---------- */
+  --ease-default: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================================
+  DARK MODE
+   ========================================================= */
+
+.dark {
+  --color-background: oklch(0.14 0.01 250);
+  --color-foreground: oklch(0.96 0.01 250);
+
+  --color-card: oklch(0.18 0.01 250);
+  --color-card-foreground: oklch(0.96 0.01 250);
+
+  --color-primary: oklch(0.72 0.19 260);
+  --color-primary-foreground: oklch(0.16 0.01 250);
+
+  --color-secondary: oklch(0.24 0.01 250);
+  --color-secondary-foreground: oklch(0.96 0.01 250);
+
+  --color-muted: oklch(0.22 0.01 250);
+  --color-muted-foreground: oklch(0.7 0.01 250);
+
+  --color-accent: oklch(0.26 0.02 250);
+  --color-accent-foreground: oklch(0.96 0.01 250);
+
+  --color-border: oklch(0.28 0.01 250);
+  --color-input: oklch(0.28 0.01 250);
+  --color-ring: oklch(0.72 0.19 260);
+
+  --color-success: oklch(0.76 0.16 145);
+  --color-warning: oklch(0.84 0.16 85);
+  --color-destructive: oklch(0.7 0.22 25);
+
+  --shadow-soft: 0 2px 10px rgb(0 0 0 / 0.2);
+  --shadow-medium: 0 8px 30px rgb(0 0 0 / 0.35);
+}
+
+/* =========================================================
+  BASE
+   ========================================================= */
+
+@layer base {
+
+  *,
+  ::before,
+  ::after,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  html.light {
+    color-scheme: light;
+  }
+
+  body {
+    @apply min-h-screen overflow-x-hidden;
+
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  .using-mouse * {
+    outline: none !important;
+  }
+}
+
+/* =========================================================
+  UTILITIES
+   ========================================================= */
+
+@layer utilities {
+  .container-app {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+  }
+
+  @media (min-width: 640px) {
+    .container-app {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container-app {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-app {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-app {
+      max-width: 1280px;
+    }
+  }
+
+  .glass {
+    background: color-mix(in oklab, var(--color-card) 70%, transparent);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-shadow-hover {
+    transition:
+      transform 0.2s var(--ease-default),
+      box-shadow 0.2s var(--ease-default);
+  }
+
+  .card-shadow-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+}

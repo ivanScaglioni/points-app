@@ -28,7 +28,12 @@ const navigation = [
 
 export function Navbar({ user }: NavbarProps) {
 
-    const { theme, toggleTheme } = useTheme()
+    const {
+        theme,
+        toggleTheme,
+        mounted,
+    } = useTheme()
+
     return (
         <Disclosure
             as="header"
@@ -85,7 +90,9 @@ export function Navbar({ user }: NavbarProps) {
                                     className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card transition hover:bg-secondary"
                                     aria-label="Cambiar tema"
                                 >
-                                    {theme === 'dark' ? (
+                                    {!mounted ? (
+                                        <div className="size-5" />
+                                    ) : theme === 'dark' ? (
                                         <SunIcon className="size-5" />
                                     ) : (
                                         <MoonIcon className="size-5" />

@@ -7,8 +7,3 @@ export const supabase = createBrowserClient(
 )
 
 
-export async function resetPassword(email: string) {
-    return supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: 'http://localhost:3000/update-password',
-    })
-}

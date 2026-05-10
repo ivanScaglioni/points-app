@@ -9,37 +9,45 @@ function applyTheme(theme: Theme) {
     root.classList.add(theme)
 }
 
-function getInitialTheme(): Theme {
-    if (typeof window === 'undefined') return 'dark'
-
-    const saved = localStorage.getItem('theme') as Theme | null
-
-    if (saved) return saved
-
-    return 'dark'
-}
-
 export function useTheme() {
-    const [theme, setTheme] = useState<Theme>(() => {
-        return getInitialTheme()
-    })
+    const [mounted, setMounted] = useState(false)
 
-    // 🔥 aplica INMEDIATO al mount (no después de paint)
+    const [theme, setTheme] =
+        useState<Theme>('dark')
+
     useEffect(() => {
-        applyTheme(theme)
+        const saved =
+            localStorage.getItem('theme') as Theme | null
+
+        const initialTheme =
+            saved ?? 'dark'
+
+        setTheme(initialTheme)
+
+        applyTheme(initialTheme)
+
+        setMounted(true)
     }, [])
 
     const toggleTheme = () => {
         const newTheme: Theme =
-            theme === 'dark' ? 'light' : 'dark'
+            theme === 'dark'
+                ? 'light'
+                : 'dark'
 
         setTheme(newTheme)
+
         applyTheme(newTheme)
-        localStorage.setItem('theme', newTheme)
+
+        localStorage.setItem(
+            'theme',
+            newTheme,
+        )
     }
 
     return {
         theme,
         toggleTheme,
+        mounted,
     }
 }

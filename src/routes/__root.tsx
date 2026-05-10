@@ -112,34 +112,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html>
       <head>
         <HeadContent />
-        {
-          /*
-          
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-        (function () {
-          try {
-            const theme = localStorage.getItem('theme');
-  
-            const isDark = theme
-              ? theme === 'dark'
-              : true;
-  
-            document.documentElement.classList.toggle('dark', isDark);
-          } catch (e) {}
-        })();
-      `,
-            }}
-          />
-          
-          */
-        }
       </head>
-
-      {/*
-      
-      */}
 
 
       <body>

@@ -5,7 +5,7 @@ import {
 } from '@tanstack/react-router'
 
 import { useMutation } from '../../../../hooks/useMutation'
-import { createPaymentDestination } from '../../../../server/createPaymentDestination'
+import { createPaymentDestination } from '../../../../server/payment/createPaymentDestination'
 
 import {
     Card,

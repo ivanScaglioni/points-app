@@ -13,14 +13,9 @@ export type Reward = {
 
     active: boolean
 
+    type: 'recharge' | 'chips'
+
     created_at: string
-
-    casino_id: string | null
-
-    casino?: {
-        id: string
-        name: string
-    } | null
 }
 
 export type User = {

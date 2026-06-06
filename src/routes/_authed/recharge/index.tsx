@@ -3,6 +3,7 @@
 import {
     createFileRoute,
     useRouter,
+    redirect,
 } from '@tanstack/react-router'
 
 import {
@@ -10,15 +11,15 @@ import {
     BanknotesIcon,
     UserIcon,
     CreditCardIcon,
-    GiftIcon,
+    FireIcon,
     ArrowPathIcon,
 } from '@heroicons/react/24/outline'
 
 import { useMutation } from '~/hooks/useMutation'
 
-import { createRecharge } from '~/server/createRecharge'
+import { createRecharge } from '~/server/recharge/createRecharge'
 
-import { getRechargeFormData } from '~/server/getRechargeFormData'
+import { getRechargeFormData } from '~/server/recharge/getRechargeFormData'
 
 import { Button } from '~/components/ui/Button'
 
@@ -55,14 +56,27 @@ export const Route =
         }),
 
         loader: async ({ deps }) => {
-            return await getRechargeFormData(
-                {
-                    data: {
-                        rewardId:
-                            deps.rewardId,
+            try {
+                return await getRechargeFormData(
+                    {
+                        data: {
+                            rewardId:
+                                deps.rewardId,
+                        },
                     },
-                },
-            )
+                )
+            } catch (error: any) {
+                throw redirect({
+                    to: '/error',
+                    search: {
+                        title: 'No se pudo continuar',
+                        message:
+                            error?.message ??
+                            'Ocurrió un error inesperado.',
+                    },
+                })
+            }
+
         },
 
         component: RechargePage,
@@ -113,13 +127,13 @@ function RechargePage() {
 
                         {/* POINTS */}
                         <div className="inline-flex items-center gap-2 rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3">
-                            <GiftIcon className="h-5 w-5 text-primary" />
+                            <FireIcon className="h-5 w-5 text-primary" />
 
-                            <span className="text-sm text-muted-foreground">
+                            <span className="text-m text-muted-foreground">
                                 Tus puntos:
                             </span>
 
-                            <span className="font-semibold">
+                            <span className="font-semibold text-2xl">
                                 {
                                     data.currentPoints
                                 }{' '}
@@ -362,7 +376,7 @@ function RechargePage() {
                                 <CardContent className="p-6">
                                     <div className="flex items-start gap-4">
                                         <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
-                                            <GiftIcon className="h-6 w-6" />
+                                            <FireIcon className="h-6 w-6" />
                                         </div>
 
                                         <div className="space-y-2">

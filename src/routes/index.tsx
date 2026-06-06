@@ -1,12 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { getLatestRewards } from '../server/getLatestRewards'
+import { getLatestRewards } from '../server/reward/getLatestRewards'
 
 import type { Reward, User } from '../types/reward'
 
 import { HeroSection } from '../components/HeroSection'
 import { RewardsPreview } from '../components/RewardsPreview'
-import { CTASection } from '../components/CTASection'
+import { AboutSection } from '../components/About'
 import { Faqs } from '../components/Faqs'
 import { Step } from '../components/Step'
 
@@ -56,7 +56,7 @@ function Home() {
 
       {/* CTA */}
       <section className="container-app pb-20">
-        <CTASection />
+        <AboutSection />
       </section>
     </main>
   )

@@ -23,11 +23,6 @@ export function PointsBalanceCard({
                     </span>
                 </h2>
 
-                <p className="mt-4 max-w-md text-sm leading-6 text-muted-foreground">
-                    Utilizá tus puntos para desbloquear
-                    beneficios, promociones y rewards
-                    exclusivos.
-                </p>
             </div>
         </div>
     )

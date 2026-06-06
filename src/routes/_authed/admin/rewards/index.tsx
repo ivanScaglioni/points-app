@@ -6,8 +6,8 @@ import {
 
 import { useState } from 'react'
 
-import { getAdminRewards } from '../../../../server/getAdminRewards'
-import { toggleReward } from '../../../../server/toggleReward'
+import { getAdminRewards } from '../../../../server/reward/getAdminRewards'
+import { toggleReward } from '../../../../server/reward/toggleReward'
 
 import type { Reward } from '../../../../types/reward'
 

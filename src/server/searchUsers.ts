@@ -2,36 +2,61 @@
 
 import { createServerFn } from '@tanstack/react-start'
 import { getSupabaseServerClient } from '../utils/supabase.server'
-import { requireWorkerOrAdmin } from './auth'
+import { requireAdmin } from './auth'
 
 export type SearchUser = {
     id: string
     email: string | null
+    role: string | null
 }
 
 export const searchUsers = createServerFn()
     .inputValidator((query: string) => query)
-    .handler(async ({ data: query }): Promise<SearchUser[]> => {
-        const supabase = getSupabaseServerClient()
+    .handler(
+        async ({
+            data: query,
+        }): Promise<SearchUser[]> => {
+            const supabase =
+                getSupabaseServerClient()
 
-        await requireWorkerOrAdmin(supabase)
+            await requireAdmin(
+                supabase,
+            )
 
-        const cleanQuery = query?.trim()
+            const cleanQuery =
+                query?.trim()
 
-        if (!cleanQuery || cleanQuery.length < 3) {
-            return []
-        }
+            if (
+                !cleanQuery ||
+                cleanQuery.length < 3
+            ) {
+                return []
+            }
 
-        const { data, error } = await supabase
-            .from('profiles')
-            .select('id, email')
-            .ilike('email', `%${cleanQuery}%`)
-            .limit(10)
+            const { data, error } =
+                await supabase
+                    .from('profiles')
+                    .select(
+                        `
+                        id,
+                        email,
+                        role
+                    `,
+                    )
+                    .ilike(
+                        'email',
+                        `%${cleanQuery}%`,
+                    )
+                    .limit(10)
 
-        if (error) throw error
+            if (error) throw error
 
-        return (data ?? []).map((u) => ({
-            id: u.id,
-            email: u.email,
-        }))
-    })
+            return (
+                data ?? []
+            ).map((u) => ({
+                id: u.id,
+                email: u.email,
+                role: u.role,
+            }))
+        },
+    )

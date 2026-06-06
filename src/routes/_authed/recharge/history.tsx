@@ -14,7 +14,7 @@ import {
     CreditCardIcon,
 } from '@heroicons/react/24/outline'
 
-import { getMyRecharges } from '../../../server/getMyRecharges'
+import { getMyRecharges } from '../../../server/recharge/getMyRecharges'
 
 import { RechargeHistoryCard } from '../../../components/recharge/RechargeHistoryCard'
 

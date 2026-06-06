@@ -7,7 +7,7 @@ import {
     CreditCardIcon,
 } from '@heroicons/react/24/outline'
 
-import { getPendingRecharges } from '../../../../server/getPendingRecharges'
+import { getPendingRecharges } from '../../../../server/recharge/getPendingRecharges'
 
 import { AdminRechargeCard } from '../../../../components/admin/recharge/AdminRechargeCard'
 

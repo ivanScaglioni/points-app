@@ -4,7 +4,15 @@ import {
     Link,
 } from '@tanstack/react-router'
 
-import { getUserDashboardData } from '~/server/getUserDashboardData'
+
+import {
+    CreditCardIcon,
+    GiftIcon,
+    ClipboardDocumentListIcon,
+    FireIcon
+} from '@heroicons/react/24/outline'
+
+import { getUserDashboardData } from '~/server/user/getUserDashboardData'
 
 import { SectionHeader } from '~/components/ui/SectionHader'
 
@@ -30,6 +38,12 @@ export const Route =
                     })
                 }
 
+                if (e === 'WORKER') {
+                    throw redirect({
+                        to: '/operator/dashboard',
+                    })
+                }
+
                 throw redirect({
                     to: '/login',
                 })
@@ -51,12 +65,23 @@ function Dashboard() {
             <div className="container-app py-8 md:py-10">
                 <div className="space-y-8">
                     {/* HEADER */}
-                    <SectionHeader
-                        align="left"
-                        badge="Dashboard"
-                        title="Tu cuenta"
-                        description={user.email}
-                    />
+                    <section className="relative overflow-hidden rounded-2xl border border-border bg-card">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.15),transparent_35%)]" />
+
+                        <div className="relative z-10 p-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                                Dashboard
+                            </div>
+
+                            <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+                                Bienvenido nuevamente
+                            </h1>
+
+                            <p className="mt-2 text-muted-foreground">
+                                {user.email}
+                            </p>
+                        </div>
+                    </section>
 
                     {/* BALANCE */}
                     <PointsBalanceCard
@@ -64,10 +89,13 @@ function Dashboard() {
                     />
 
                     {/* ACTIONS */}
-                    <div className="grid gap-4 md:grid-cols-3">
+                    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                         <ActionCard
                             title="Nueva recarga"
-                            description="Solicitá una nueva recarga y ganá puntos."
+                            description="Solicitá una recarga y acumulá puntos."
+                            icon={
+                                <CreditCardIcon className="h-6 w-6" />
+                            }
                             to="/recharge"
                             search={{
                                 rewardId: undefined,
@@ -76,59 +104,102 @@ function Dashboard() {
 
                         <ActionCard
                             title="Mis recargas"
-                            description="Consultá el historial y estado."
+                            description="Consultá el historial de solicitudes."
+                            icon={
+                                <ClipboardDocumentListIcon className="h-6 w-6" />
+                            }
                             to="/recharge/history"
                         />
 
                         <ActionCard
-                            title="Rewards"
-                            description="Canjeá tus puntos por beneficios."
+                            title="Beneficios"
+                            description="Canjeá puntos por recompensas."
+                            icon={
+                                <FireIcon className="h-6 w-6" />
+                            }
                             to="/rewards"
                         />
                     </div>
 
                     {/* TRANSACTIONS */}
                     <DashboardCard>
-                        <div className="mb-6 flex items-center justify-between">
+                        {/* HEADER */}
+
+                        <div
+                            className="
+            flex
+            items-start
+            justify-between
+
+            border-b
+            border-border
+
+            p-6
+        "
+                        >
                             <div>
-                                <h2 className="text-xl font-semibold tracking-tight">
-                                    Últimos movimientos
+                                <h2
+                                    className="
+                    text-xl
+                    font-semibold
+                    tracking-tight
+                "
+                                >
+                                    Actividad reciente
                                 </h2>
 
-                                <p className="mt-1 text-sm text-muted-foreground">
-                                    Historial reciente de puntos
+                                <p
+                                    className="
+                    mt-1
+                    text-sm
+                    text-muted-foreground
+                "
+                                >
+                                    Tus últimos movimientos de puntos.
                                 </p>
                             </div>
 
                             <Link
                                 to="/transactions"
                                 search={{ page: 0 }}
-                                className="text-sm font-medium text-primary transition hover:opacity-80"
+                                className="
+                text-sm
+                font-medium
+                text-primary
+
+                transition-opacity
+
+                hover:opacity-80
+            "
                             >
-                                Ver todos
+                                Ver historial
                             </Link>
                         </div>
 
-                        {transactions.length === 0 ? (
-                            <EmptyState
-                                title="No hay movimientos"
-                                description="Todavía no tenés movimientos registrados."
-                            />
-                        ) : (
-                            <div className="space-y-4">
-                                {transactions.map((tx) => (
-                                    <TransactionItem
-                                        key={tx.id}
-                                        description={tx.description}
-                                        amount={tx.amount}
-                                        type={tx.type}
-                                        createdAt={tx.created_at}
-                                        reward={tx.reward}
-                                        variant="compact"
-                                    />
-                                ))}
-                            </div>
-                        )}
+                        {/* CONTENT */}
+
+                        <div className="p-6">
+                            {transactions.length === 0 ? (
+                                <EmptyState
+                                    title="Todavía no hay movimientos"
+                                    description="Cuando realices una recarga o canjees un beneficio aparecerán aquí."
+                                />
+                            ) : (
+                                <div className="space-y-3">
+                                    {transactions.map(tx => (
+                                        <TransactionItem
+                                            key={tx.id}
+                                            description={tx.description}
+                                            amount={tx.amount}
+                                            type={tx.type}
+                                            createdAt={tx.created_at}
+                                            reward={tx.reward}
+                                            variant="compact"
+                                        />
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </DashboardCard>
                 </div>
             </div>

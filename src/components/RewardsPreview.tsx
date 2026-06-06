@@ -1,44 +1,124 @@
-import { RewardCard } from '~/components/reward/RewardCard'
 import { Link } from '@tanstack/react-router'
-import type { Reward, User } from '../types/reward'
+
+import { RewardCard } from '~/components/reward/RewardCard'
+
+import type {
+    Reward,
+    User,
+} from '../types/reward'
+
+type Props = {
+    rewards: Reward[]
+    user: User | null
+}
 
 export function RewardsPreview({
     rewards,
     user,
-}: {
-    rewards: Reward[]
-    user: User | null
-}) {
-    const topRewards = rewards.slice(0, 4)
+}: Props) {
+    const topRewards =
+        rewards.slice(0, 4)
 
     return (
-        <div className="px-6 pb-20">
-            <div className="max-w-6xl mx-auto space-y-6">
+        <section
+            className="
+                py-8
+                sm:py-10
+                lg:py-20
+            "
+        >
+            <div className="container-app">
+                <div
+                    className="
+                        flex
+                        flex-col
+                        gap-4
 
-                <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-bold">
-                        Rewards destacados
-                    </h2>
+                        sm:flex-row
+                        sm:items-end
+                        sm:justify-between
+                    "
+                >
+                    <div>
+                        <h2
+                            className="
+                                text-2xl
+                                font-bold
+                                tracking-tight
+
+                                sm:text-3xl
+                            "
+                        >
+                            Beneficios destacados
+                        </h2>
+
+                        <p
+                            className="
+                                mt-2
+                                text-sm
+                                text-muted-foreground
+
+                                sm:text-base
+                            "
+                        >
+                            Canjeá tus puntos por
+                            fichas y recargas.
+                        </p>
+                    </div>
 
                     <Link
                         to="/rewards"
-                        className="text-indigo-400 hover:text-indigo-300"
+                        className="
+                            inline-flex
+                            h-10
+                            items-center
+                            justify-center
+                            rounded-md
+                            border
+                            border-border
+                            bg-card
+                            px-4
+                            text-xl
+                            font-medium
+                            transition-colors
+
+                            hover:bg-accent
+                            hover:text-accent-foreground
+                        "
                     >
-                        Ver todos →
+                        Ver todos
                     </Link>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {topRewards.map((reward) => (
-                        <RewardCard
-                            key={reward.id}
-                            reward={reward}
-                            user={user}
-                        />
-                    ))}
-                </div>
+                <div
+                    className="
+                        mt-6
 
+                        grid
+                        grid-cols-1
+                        gap-4
+
+                        md:grid-cols-2
+                        md:gap-6
+                    "
+                >
+                    {topRewards.map(
+                        reward => (
+                            <RewardCard
+                                key={
+                                    reward.id
+                                }
+                                reward={
+                                    reward
+                                }
+                                user={
+                                    user
+                                }
+                            />
+                        ),
+                    )}
+                </div>
             </div>
-        </div>
+        </section>
     )
 }

@@ -13,7 +13,7 @@ import { CasinoForm } from '~/components/admin/casino/CasinoForm'
 
 import { useMutation } from '~/hooks/useMutation'
 
-import { createCasino } from '~/server/createCasino'
+import { createCasino } from '~/server/casino/createCasino'
 
 import {
     Card,

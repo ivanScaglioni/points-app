@@ -5,7 +5,7 @@ const steps = [
         description:
             'Registrate en segundos y accedé a tu dashboard personal para empezar a sumar puntos.',
         image:
-            'https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop',
+            'https://res.cloudinary.com/ivanscacloud/image/upload/v1780724768/fenix/59310789-b8e3-4c1f-b2d8-d93a6ca49f75_tzbcbw.png',
     },
 
     {
@@ -14,16 +14,16 @@ const steps = [
         description:
             'Elegí tu casino, cargá los datos de transferencia y enviá la solicitud desde la app.',
         image:
-            'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+            'https://res.cloudinary.com/ivanscacloud/image/upload/v1780724768/fenix/60e239a4-5f8c-43d4-92a2-de194bac1cdf_pah5gw.png',
     },
 
     {
         number: '03',
         title: 'Un operador procesa tu pedido',
         description:
-            'Un worker toma tu recarga, valida la información y procesa la operación rápidamente.',
+            'Un operador toma tu recarga, valida la información y procesa la operación rápidamente.',
         image:
-            'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop',
+            'https://res.cloudinary.com/ivanscacloud/image/upload/v1780724768/fenix/5929b9f6-ad7e-48ee-aab2-7cc9d9d8f4ae_jvgmqz.png',
     },
 
     {
@@ -32,7 +32,7 @@ const steps = [
         description:
             'Acumulá puntos automáticamente y canjealos por beneficios exclusivos dentro de la plataforma.',
         image:
-            'https://images.unsplash.com/photo-1607082350899-7e105aa886ae?q=80&w=1200&auto=format&fit=crop',
+            'https://res.cloudinary.com/ivanscacloud/image/upload/v1780724768/fenix/734f04e9-c1d6-415c-aad3-5e097f807a89_gbjci0.png',
     },
 ]
 export function Step() {
@@ -40,9 +40,6 @@ export function Step() {
         <section className="container-app py-24">
             {/* HEADER */}
             <div className="mx-auto max-w-3xl text-center">
-                <div className="mb-4 inline-flex rounded-full border border-border bg-secondary px-4 py-2 text-sm text-muted-foreground">
-                    Cómo funciona
-                </div>
 
                 <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
                     Empezá a ganar puntos en minutos

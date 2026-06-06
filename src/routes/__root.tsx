@@ -57,8 +57,8 @@ export const Route = createRootRouteWithContext<{
       },
       ...seo({
         title:
-          'FacuCoins',
-        description: `Canjea puntos por beneficios`,
+          'Fenix Fichas',
+        description: `Recargá, acumulá puntos y desbloqueá recompensas exclusivas`,
       }),
     ],
     links: [
@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{
         href: '/favicon-16x16.png',
       },
       { rel: 'manifest', href: '/site.webmanifest', color: '#fffff' },
-      { rel: 'icon', href: '/favicon.ico' },
+      { rel: 'icon', href: '/fenixfichas.ico' },
     ],
   }),
   errorComponent: (props: any) => {

@@ -10,12 +10,11 @@ import {
   UsersIcon,
   CreditCardIcon,
   BanknotesIcon,
-  GiftIcon,
+  FireIcon,
   ArrowRightIcon,
   BuildingOffice2Icon,
   ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline'
-import { CurrencyDollarIcon } from '@heroicons/react/24/outline'
 import { getAdminDashboardData } from '../../../server/getAdminDashboardData'
 
 import {
@@ -45,9 +44,11 @@ export const Route =
 function AdminDashboard() {
   const {
     pendingRecharges,
+    pendingChips,
     totalUsers,
     totalTransactions,
     totalRecharges,
+    totalChips,
   } = Route.useLoaderData()
 
   return (
@@ -81,16 +82,30 @@ function AdminDashboard() {
             </div>
 
             {/* QUICK ACTION */}
-            <Button
-              asChild
-              className="h-12 px-6"
-            >
-              <Link to="/admin/recharge">
-                Ver pendientes
+            <div className="flex flex-wrap gap-3">
+              <Button
+                asChild
+                className="h-12 px-6"
+              >
+                <Link to="/admin/recharge">
+                  Recargas pendientes
 
-                <ArrowRightIcon className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+                  <ArrowRightIcon className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                className="h-12 px-6"
+              >
+                <Link to="/admin/chip">
+                  Fichas pendientes
+
+                  <ArrowRightIcon className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -98,7 +113,7 @@ function AdminDashboard() {
       {/* CONTENT */}
       <section className="mx-auto max-w-7xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
         {/* STATS */}
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-6">
           {/* PENDING */}
           <Link to="/admin/recharge">
             <Card className="group border-yellow-500/20 bg-yellow-500/5 transition-all hover:-translate-y-1 hover:border-yellow-500/40 hover:bg-yellow-500/10">
@@ -115,6 +130,28 @@ function AdminDashboard() {
 
                     <h2 className="mt-1 text-4xl font-bold tracking-tight text-yellow-400">
                       {pendingRecharges}
+                    </h2>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/admin/chip">
+            <Card className="group border-indigo-500/20 bg-indigo-500/5 transition-all hover:-translate-y-1 hover:border-indigo-500/40 hover:bg-indigo-500/10">
+              <CardContent className="p-6">
+                <div className="space-y-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-500/10 text-indigo-400">
+                    <FireIcon className="h-6 w-6" />
+                  </div>
+
+                  <div>
+                    <p className="text-sm text-muted-foreground">
+                      Fichas pendientes
+                    </p>
+
+                    <h2 className="mt-1 text-4xl font-bold tracking-tight text-indigo-400">
+                      {pendingChips}
                     </h2>
                   </div>
                 </div>
@@ -143,7 +180,7 @@ function AdminDashboard() {
             </CardContent>
           </Card>
 
-          {/* TRANSACTIONS */}
+          {/* TRANSACTIONS 
           <Card className="transition-all hover:-translate-y-1 hover:border-primary/20">
             <CardContent className="p-6">
               <div className="space-y-3">
@@ -163,6 +200,7 @@ function AdminDashboard() {
               </div>
             </CardContent>
           </Card>
+          */}
 
           {/* RECHARGES */}
           <Card className="transition-all hover:-translate-y-1 hover:border-primary/20">
@@ -185,6 +223,28 @@ function AdminDashboard() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Chips 
+        <Card className="transition-all hover:-translate-y-1 hover:border-primary/20">
+          <CardContent className="p-6">
+            <div className="space-y-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <GiftIcon className="h-6 w-6" />
+              </div>
+
+              <div>
+                <p className="text-sm text-muted-foreground">
+                  Total fichas
+                </p>
+
+                <h2 className="mt-1 text-4xl font-bold tracking-tight">
+                  {totalChips}
+                </h2>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        */}
 
         {/* MANAGEMENT */}
         <div className="space-y-5">
@@ -210,10 +270,19 @@ function AdminDashboard() {
             />
 
             <AdminActionCard
-              title="Rewards"
+              title="Procesar fichas"
+              description="Aprobar o rechazar solicitudes de fichas."
+              icon={
+                <FireIcon className="h-6 w-6" />
+              }
+              to="/admin/chips"
+            />
+
+            <AdminActionCard
+              title="Beneficios"
               description="Crear y administrar beneficios."
               icon={
-                <GiftIcon className="h-6 w-6" />
+                <FireIcon className="h-6 w-6" />
               }
               to="/admin/rewards"
             />
@@ -237,12 +306,12 @@ function AdminDashboard() {
             />
 
             <AdminActionCard
-              title="Asignar puntos"
-              description="Dar puntos manualmente a un usuario."
+              title="Usuarios"
+              description="Administrar usuarios, roles y puntos."
               icon={
-                <CurrencyDollarIcon className="h-6 w-6" />
+                <UsersIcon className="h-6 w-6" />
               }
-              to="/admin/user/give-points"
+              to="/admin/user"
             />
           </div>
         </div>

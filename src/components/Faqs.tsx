@@ -6,16 +6,16 @@ const faqs = [
 
     {
         q: '¿Cómo puedo canjear mis puntos?',
-        a: 'Desde la sección de rewards podés elegir un beneficio y solicitar el canje directamente.',
+        a: 'Desde la sección de beneficios podés elegir un beneficio y solicitar el canje directamente.',
     },
 
     {
         q: '¿Qué tipo de beneficios puedo obtener?',
-        a: 'La plataforma ofrece bonos, promociones, créditos y beneficios exclusivos asociados a distintos casinos.',
+        a: 'La plataforma ofrece beneficios exclusivos asociados a distintos casinos.',
     },
     {
         q: '¿Qué pasa después de solicitar una recarga?',
-        a: 'Un operador toma tu solicitud, valida la transferencia y procesa la recarga manualmente.',
+        a: 'Un operador toma tu solicitud, valida la transferencia y procesa la recarga manualmente. Puede tardar algunos minutos',
     },
     {
         q: '¿Mis puntos vencen?',
@@ -23,18 +23,15 @@ const faqs = [
     },
     {
         q: '¿Qué pasa si rechazan mi recarga?',
-        a: 'Si tu recarga incluía un reward, los puntos reservados se devuelven automáticamente a tu balance.',
+        a: 'Si tu recarga incluía un beneficio, los puntos reservados se devuelven automáticamente a tu balance.',
     },
     
 ]
 export function Faqs() {
     return (
-        <section className="container-app py-24">
+        <section id="faq" className="container-app py-24">
             {/* HEADER */}
             <div className="mx-auto max-w-3xl text-center">
-                <div className="mb-4 inline-flex rounded-full border border-border bg-secondary px-4 py-2 text-sm text-muted-foreground">
-                    FAQs
-                </div>
 
                 <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
                     Preguntas frecuentes
@@ -42,7 +39,7 @@ export function Faqs() {
 
                 <p className="mt-6 text-lg text-muted-foreground">
                     Todo lo que necesitás saber sobre
-                    recargas, puntos y rewards.
+                    recargas, puntos y beneficios.
                 </p>
             </div>
 

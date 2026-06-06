@@ -18,11 +18,11 @@ import {
     IdentificationIcon,
 } from '@heroicons/react/24/outline'
 
-import { getRechargeById } from '../../../../server/getRechargeById'
+import { getRechargeById } from '../../../../server/recharge/getRechargeById'
 
-import { approveRecharge } from '../../../../server/approveRecharge'
+import { approveRecharge } from '../../../../server/recharge/approveRecharge'
 
-import { rejectRecharge } from '../../../../server/rejectRecharge'
+import { rejectRecharge } from '../../../../server/recharge/rejectRecharge'
 
 import { useMutation } from '../../../../hooks/useMutation'
 

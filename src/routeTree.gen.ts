@@ -10,31 +10,42 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UpdatePasswordRouteImport } from './routes/update-password'
+import { Route as TermsPrivacyRouteImport } from './routes/terms-privacy'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as RewardsRouteImport } from './routes/rewards'
 import { Route as LogoutRouteImport } from './routes/logout'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ErrorRouteImport } from './routes/error'
 import { Route as AuthedRouteImport } from './routes/_authed'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthedTransactionsRouteImport } from './routes/_authed/transactions'
 import { Route as AuthedDashboardRouteImport } from './routes/_authed/dashboard'
 import { Route as AuthedRechargeIndexRouteImport } from './routes/_authed/recharge/index'
+import { Route as AuthedChipIndexRouteImport } from './routes/_authed/chip/index'
 import { Route as AuthedRechargeHistoryRouteImport } from './routes/_authed/recharge/history'
 import { Route as AuthedOperatorDashboardRouteImport } from './routes/_authed/operator/dashboard'
+import { Route as AuthedChipHistoryRouteImport } from './routes/_authed/chip/history'
 import { Route as AuthedAdminDashboardRouteImport } from './routes/_authed/admin/dashboard'
+import { Route as AuthedAdminUserIndexRouteImport } from './routes/_authed/admin/user/index'
 import { Route as AuthedAdminRewardsIndexRouteImport } from './routes/_authed/admin/rewards/index'
 import { Route as AuthedAdminRechargeIndexRouteImport } from './routes/_authed/admin/recharge/index'
 import { Route as AuthedAdminPaymentDestinationsIndexRouteImport } from './routes/_authed/admin/payment-destinations/index'
+import { Route as AuthedAdminChipIndexRouteImport } from './routes/_authed/admin/chip/index'
 import { Route as AuthedAdminCasinosIndexRouteImport } from './routes/_authed/admin/casinos/index'
-import { Route as AuthedAdminUserGivePointsRouteImport } from './routes/_authed/admin/user/give-points'
 import { Route as AuthedAdminRewardsNewRouteImport } from './routes/_authed/admin/rewards/new'
 import { Route as AuthedAdminRechargeIdRouteImport } from './routes/_authed/admin/recharge/$id'
 import { Route as AuthedAdminPaymentDestinationsNewRouteImport } from './routes/_authed/admin/payment-destinations/new'
+import { Route as AuthedAdminChipIdRouteImport } from './routes/_authed/admin/chip/$id'
 import { Route as AuthedAdminCasinosNewRouteImport } from './routes/_authed/admin/casinos/new'
 
 const UpdatePasswordRoute = UpdatePasswordRouteImport.update({
   id: '/update-password',
   path: '/update-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsPrivacyRoute = TermsPrivacyRouteImport.update({
+  id: '/terms-privacy',
+  path: '/terms-privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SignupRoute = SignupRouteImport.update({
@@ -55,6 +66,11 @@ const LogoutRoute = LogoutRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ErrorRoute = ErrorRouteImport.update({
+  id: '/error',
+  path: '/error',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthedRoute = AuthedRouteImport.update({
@@ -81,6 +97,11 @@ const AuthedRechargeIndexRoute = AuthedRechargeIndexRouteImport.update({
   path: '/recharge/',
   getParentRoute: () => AuthedRoute,
 } as any)
+const AuthedChipIndexRoute = AuthedChipIndexRouteImport.update({
+  id: '/chip/',
+  path: '/chip/',
+  getParentRoute: () => AuthedRoute,
+} as any)
 const AuthedRechargeHistoryRoute = AuthedRechargeHistoryRouteImport.update({
   id: '/recharge/history',
   path: '/recharge/history',
@@ -91,9 +112,19 @@ const AuthedOperatorDashboardRoute = AuthedOperatorDashboardRouteImport.update({
   path: '/operator/dashboard',
   getParentRoute: () => AuthedRoute,
 } as any)
+const AuthedChipHistoryRoute = AuthedChipHistoryRouteImport.update({
+  id: '/chip/history',
+  path: '/chip/history',
+  getParentRoute: () => AuthedRoute,
+} as any)
 const AuthedAdminDashboardRoute = AuthedAdminDashboardRouteImport.update({
   id: '/admin/dashboard',
   path: '/admin/dashboard',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedAdminUserIndexRoute = AuthedAdminUserIndexRouteImport.update({
+  id: '/admin/user/',
+  path: '/admin/user/',
   getParentRoute: () => AuthedRoute,
 } as any)
 const AuthedAdminRewardsIndexRoute = AuthedAdminRewardsIndexRouteImport.update({
@@ -113,17 +144,16 @@ const AuthedAdminPaymentDestinationsIndexRoute =
     path: '/admin/payment-destinations/',
     getParentRoute: () => AuthedRoute,
   } as any)
+const AuthedAdminChipIndexRoute = AuthedAdminChipIndexRouteImport.update({
+  id: '/admin/chip/',
+  path: '/admin/chip/',
+  getParentRoute: () => AuthedRoute,
+} as any)
 const AuthedAdminCasinosIndexRoute = AuthedAdminCasinosIndexRouteImport.update({
   id: '/admin/casinos/',
   path: '/admin/casinos/',
   getParentRoute: () => AuthedRoute,
 } as any)
-const AuthedAdminUserGivePointsRoute =
-  AuthedAdminUserGivePointsRouteImport.update({
-    id: '/admin/user/give-points',
-    path: '/admin/user/give-points',
-    getParentRoute: () => AuthedRoute,
-  } as any)
 const AuthedAdminRewardsNewRoute = AuthedAdminRewardsNewRouteImport.update({
   id: '/admin/rewards/new',
   path: '/admin/rewards/new',
@@ -140,6 +170,11 @@ const AuthedAdminPaymentDestinationsNewRoute =
     path: '/admin/payment-destinations/new',
     getParentRoute: () => AuthedRoute,
   } as any)
+const AuthedAdminChipIdRoute = AuthedAdminChipIdRouteImport.update({
+  id: '/admin/chip/$id',
+  path: '/admin/chip/$id',
+  getParentRoute: () => AuthedRoute,
+} as any)
 const AuthedAdminCasinosNewRoute = AuthedAdminCasinosNewRouteImport.update({
   id: '/admin/casinos/new',
   path: '/admin/casinos/new',
@@ -148,155 +183,193 @@ const AuthedAdminCasinosNewRoute = AuthedAdminCasinosNewRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/error': typeof ErrorRoute
   '/login': typeof LoginRoute
   '/logout': typeof LogoutRoute
   '/rewards': typeof RewardsRoute
   '/signup': typeof SignupRoute
+  '/terms-privacy': typeof TermsPrivacyRoute
   '/update-password': typeof UpdatePasswordRoute
   '/dashboard': typeof AuthedDashboardRoute
   '/transactions': typeof AuthedTransactionsRoute
   '/admin/dashboard': typeof AuthedAdminDashboardRoute
+  '/chip/history': typeof AuthedChipHistoryRoute
   '/operator/dashboard': typeof AuthedOperatorDashboardRoute
   '/recharge/history': typeof AuthedRechargeHistoryRoute
+  '/chip/': typeof AuthedChipIndexRoute
   '/recharge/': typeof AuthedRechargeIndexRoute
   '/admin/casinos/new': typeof AuthedAdminCasinosNewRoute
+  '/admin/chip/$id': typeof AuthedAdminChipIdRoute
   '/admin/payment-destinations/new': typeof AuthedAdminPaymentDestinationsNewRoute
   '/admin/recharge/$id': typeof AuthedAdminRechargeIdRoute
   '/admin/rewards/new': typeof AuthedAdminRewardsNewRoute
-  '/admin/user/give-points': typeof AuthedAdminUserGivePointsRoute
   '/admin/casinos/': typeof AuthedAdminCasinosIndexRoute
+  '/admin/chip/': typeof AuthedAdminChipIndexRoute
   '/admin/payment-destinations/': typeof AuthedAdminPaymentDestinationsIndexRoute
   '/admin/recharge/': typeof AuthedAdminRechargeIndexRoute
   '/admin/rewards/': typeof AuthedAdminRewardsIndexRoute
+  '/admin/user/': typeof AuthedAdminUserIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/error': typeof ErrorRoute
   '/login': typeof LoginRoute
   '/logout': typeof LogoutRoute
   '/rewards': typeof RewardsRoute
   '/signup': typeof SignupRoute
+  '/terms-privacy': typeof TermsPrivacyRoute
   '/update-password': typeof UpdatePasswordRoute
   '/dashboard': typeof AuthedDashboardRoute
   '/transactions': typeof AuthedTransactionsRoute
   '/admin/dashboard': typeof AuthedAdminDashboardRoute
+  '/chip/history': typeof AuthedChipHistoryRoute
   '/operator/dashboard': typeof AuthedOperatorDashboardRoute
   '/recharge/history': typeof AuthedRechargeHistoryRoute
+  '/chip': typeof AuthedChipIndexRoute
   '/recharge': typeof AuthedRechargeIndexRoute
   '/admin/casinos/new': typeof AuthedAdminCasinosNewRoute
+  '/admin/chip/$id': typeof AuthedAdminChipIdRoute
   '/admin/payment-destinations/new': typeof AuthedAdminPaymentDestinationsNewRoute
   '/admin/recharge/$id': typeof AuthedAdminRechargeIdRoute
   '/admin/rewards/new': typeof AuthedAdminRewardsNewRoute
-  '/admin/user/give-points': typeof AuthedAdminUserGivePointsRoute
   '/admin/casinos': typeof AuthedAdminCasinosIndexRoute
+  '/admin/chip': typeof AuthedAdminChipIndexRoute
   '/admin/payment-destinations': typeof AuthedAdminPaymentDestinationsIndexRoute
   '/admin/recharge': typeof AuthedAdminRechargeIndexRoute
   '/admin/rewards': typeof AuthedAdminRewardsIndexRoute
+  '/admin/user': typeof AuthedAdminUserIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authed': typeof AuthedRouteWithChildren
+  '/error': typeof ErrorRoute
   '/login': typeof LoginRoute
   '/logout': typeof LogoutRoute
   '/rewards': typeof RewardsRoute
   '/signup': typeof SignupRoute
+  '/terms-privacy': typeof TermsPrivacyRoute
   '/update-password': typeof UpdatePasswordRoute
   '/_authed/dashboard': typeof AuthedDashboardRoute
   '/_authed/transactions': typeof AuthedTransactionsRoute
   '/_authed/admin/dashboard': typeof AuthedAdminDashboardRoute
+  '/_authed/chip/history': typeof AuthedChipHistoryRoute
   '/_authed/operator/dashboard': typeof AuthedOperatorDashboardRoute
   '/_authed/recharge/history': typeof AuthedRechargeHistoryRoute
+  '/_authed/chip/': typeof AuthedChipIndexRoute
   '/_authed/recharge/': typeof AuthedRechargeIndexRoute
   '/_authed/admin/casinos/new': typeof AuthedAdminCasinosNewRoute
+  '/_authed/admin/chip/$id': typeof AuthedAdminChipIdRoute
   '/_authed/admin/payment-destinations/new': typeof AuthedAdminPaymentDestinationsNewRoute
   '/_authed/admin/recharge/$id': typeof AuthedAdminRechargeIdRoute
   '/_authed/admin/rewards/new': typeof AuthedAdminRewardsNewRoute
-  '/_authed/admin/user/give-points': typeof AuthedAdminUserGivePointsRoute
   '/_authed/admin/casinos/': typeof AuthedAdminCasinosIndexRoute
+  '/_authed/admin/chip/': typeof AuthedAdminChipIndexRoute
   '/_authed/admin/payment-destinations/': typeof AuthedAdminPaymentDestinationsIndexRoute
   '/_authed/admin/recharge/': typeof AuthedAdminRechargeIndexRoute
   '/_authed/admin/rewards/': typeof AuthedAdminRewardsIndexRoute
+  '/_authed/admin/user/': typeof AuthedAdminUserIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/error'
     | '/login'
     | '/logout'
     | '/rewards'
     | '/signup'
+    | '/terms-privacy'
     | '/update-password'
     | '/dashboard'
     | '/transactions'
     | '/admin/dashboard'
+    | '/chip/history'
     | '/operator/dashboard'
     | '/recharge/history'
+    | '/chip/'
     | '/recharge/'
     | '/admin/casinos/new'
+    | '/admin/chip/$id'
     | '/admin/payment-destinations/new'
     | '/admin/recharge/$id'
     | '/admin/rewards/new'
-    | '/admin/user/give-points'
     | '/admin/casinos/'
+    | '/admin/chip/'
     | '/admin/payment-destinations/'
     | '/admin/recharge/'
     | '/admin/rewards/'
+    | '/admin/user/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/error'
     | '/login'
     | '/logout'
     | '/rewards'
     | '/signup'
+    | '/terms-privacy'
     | '/update-password'
     | '/dashboard'
     | '/transactions'
     | '/admin/dashboard'
+    | '/chip/history'
     | '/operator/dashboard'
     | '/recharge/history'
+    | '/chip'
     | '/recharge'
     | '/admin/casinos/new'
+    | '/admin/chip/$id'
     | '/admin/payment-destinations/new'
     | '/admin/recharge/$id'
     | '/admin/rewards/new'
-    | '/admin/user/give-points'
     | '/admin/casinos'
+    | '/admin/chip'
     | '/admin/payment-destinations'
     | '/admin/recharge'
     | '/admin/rewards'
+    | '/admin/user'
   id:
     | '__root__'
     | '/'
     | '/_authed'
+    | '/error'
     | '/login'
     | '/logout'
     | '/rewards'
     | '/signup'
+    | '/terms-privacy'
     | '/update-password'
     | '/_authed/dashboard'
     | '/_authed/transactions'
     | '/_authed/admin/dashboard'
+    | '/_authed/chip/history'
     | '/_authed/operator/dashboard'
     | '/_authed/recharge/history'
+    | '/_authed/chip/'
     | '/_authed/recharge/'
     | '/_authed/admin/casinos/new'
+    | '/_authed/admin/chip/$id'
     | '/_authed/admin/payment-destinations/new'
     | '/_authed/admin/recharge/$id'
     | '/_authed/admin/rewards/new'
-    | '/_authed/admin/user/give-points'
     | '/_authed/admin/casinos/'
+    | '/_authed/admin/chip/'
     | '/_authed/admin/payment-destinations/'
     | '/_authed/admin/recharge/'
     | '/_authed/admin/rewards/'
+    | '/_authed/admin/user/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthedRoute: typeof AuthedRouteWithChildren
+  ErrorRoute: typeof ErrorRoute
   LoginRoute: typeof LoginRoute
   LogoutRoute: typeof LogoutRoute
   RewardsRoute: typeof RewardsRoute
   SignupRoute: typeof SignupRoute
+  TermsPrivacyRoute: typeof TermsPrivacyRoute
   UpdatePasswordRoute: typeof UpdatePasswordRoute
 }
 
@@ -307,6 +380,13 @@ declare module '@tanstack/react-router' {
       path: '/update-password'
       fullPath: '/update-password'
       preLoaderRoute: typeof UpdatePasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-privacy': {
+      id: '/terms-privacy'
+      path: '/terms-privacy'
+      fullPath: '/terms-privacy'
+      preLoaderRoute: typeof TermsPrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/signup': {
@@ -335,6 +415,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/error': {
+      id: '/error'
+      path: '/error'
+      fullPath: '/error'
+      preLoaderRoute: typeof ErrorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authed': {
@@ -372,6 +459,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedRechargeIndexRouteImport
       parentRoute: typeof AuthedRoute
     }
+    '/_authed/chip/': {
+      id: '/_authed/chip/'
+      path: '/chip'
+      fullPath: '/chip/'
+      preLoaderRoute: typeof AuthedChipIndexRouteImport
+      parentRoute: typeof AuthedRoute
+    }
     '/_authed/recharge/history': {
       id: '/_authed/recharge/history'
       path: '/recharge/history'
@@ -386,11 +480,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedOperatorDashboardRouteImport
       parentRoute: typeof AuthedRoute
     }
+    '/_authed/chip/history': {
+      id: '/_authed/chip/history'
+      path: '/chip/history'
+      fullPath: '/chip/history'
+      preLoaderRoute: typeof AuthedChipHistoryRouteImport
+      parentRoute: typeof AuthedRoute
+    }
     '/_authed/admin/dashboard': {
       id: '/_authed/admin/dashboard'
       path: '/admin/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AuthedAdminDashboardRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/admin/user/': {
+      id: '/_authed/admin/user/'
+      path: '/admin/user'
+      fullPath: '/admin/user/'
+      preLoaderRoute: typeof AuthedAdminUserIndexRouteImport
       parentRoute: typeof AuthedRoute
     }
     '/_authed/admin/rewards/': {
@@ -414,18 +522,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedAdminPaymentDestinationsIndexRouteImport
       parentRoute: typeof AuthedRoute
     }
+    '/_authed/admin/chip/': {
+      id: '/_authed/admin/chip/'
+      path: '/admin/chip'
+      fullPath: '/admin/chip/'
+      preLoaderRoute: typeof AuthedAdminChipIndexRouteImport
+      parentRoute: typeof AuthedRoute
+    }
     '/_authed/admin/casinos/': {
       id: '/_authed/admin/casinos/'
       path: '/admin/casinos'
       fullPath: '/admin/casinos/'
       preLoaderRoute: typeof AuthedAdminCasinosIndexRouteImport
-      parentRoute: typeof AuthedRoute
-    }
-    '/_authed/admin/user/give-points': {
-      id: '/_authed/admin/user/give-points'
-      path: '/admin/user/give-points'
-      fullPath: '/admin/user/give-points'
-      preLoaderRoute: typeof AuthedAdminUserGivePointsRouteImport
       parentRoute: typeof AuthedRoute
     }
     '/_authed/admin/rewards/new': {
@@ -449,6 +557,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedAdminPaymentDestinationsNewRouteImport
       parentRoute: typeof AuthedRoute
     }
+    '/_authed/admin/chip/$id': {
+      id: '/_authed/admin/chip/$id'
+      path: '/admin/chip/$id'
+      fullPath: '/admin/chip/$id'
+      preLoaderRoute: typeof AuthedAdminChipIdRouteImport
+      parentRoute: typeof AuthedRoute
+    }
     '/_authed/admin/casinos/new': {
       id: '/_authed/admin/casinos/new'
       path: '/admin/casinos/new'
@@ -463,38 +578,46 @@ interface AuthedRouteChildren {
   AuthedDashboardRoute: typeof AuthedDashboardRoute
   AuthedTransactionsRoute: typeof AuthedTransactionsRoute
   AuthedAdminDashboardRoute: typeof AuthedAdminDashboardRoute
+  AuthedChipHistoryRoute: typeof AuthedChipHistoryRoute
   AuthedOperatorDashboardRoute: typeof AuthedOperatorDashboardRoute
   AuthedRechargeHistoryRoute: typeof AuthedRechargeHistoryRoute
+  AuthedChipIndexRoute: typeof AuthedChipIndexRoute
   AuthedRechargeIndexRoute: typeof AuthedRechargeIndexRoute
   AuthedAdminCasinosNewRoute: typeof AuthedAdminCasinosNewRoute
+  AuthedAdminChipIdRoute: typeof AuthedAdminChipIdRoute
   AuthedAdminPaymentDestinationsNewRoute: typeof AuthedAdminPaymentDestinationsNewRoute
   AuthedAdminRechargeIdRoute: typeof AuthedAdminRechargeIdRoute
   AuthedAdminRewardsNewRoute: typeof AuthedAdminRewardsNewRoute
-  AuthedAdminUserGivePointsRoute: typeof AuthedAdminUserGivePointsRoute
   AuthedAdminCasinosIndexRoute: typeof AuthedAdminCasinosIndexRoute
+  AuthedAdminChipIndexRoute: typeof AuthedAdminChipIndexRoute
   AuthedAdminPaymentDestinationsIndexRoute: typeof AuthedAdminPaymentDestinationsIndexRoute
   AuthedAdminRechargeIndexRoute: typeof AuthedAdminRechargeIndexRoute
   AuthedAdminRewardsIndexRoute: typeof AuthedAdminRewardsIndexRoute
+  AuthedAdminUserIndexRoute: typeof AuthedAdminUserIndexRoute
 }
 
 const AuthedRouteChildren: AuthedRouteChildren = {
   AuthedDashboardRoute: AuthedDashboardRoute,
   AuthedTransactionsRoute: AuthedTransactionsRoute,
   AuthedAdminDashboardRoute: AuthedAdminDashboardRoute,
+  AuthedChipHistoryRoute: AuthedChipHistoryRoute,
   AuthedOperatorDashboardRoute: AuthedOperatorDashboardRoute,
   AuthedRechargeHistoryRoute: AuthedRechargeHistoryRoute,
+  AuthedChipIndexRoute: AuthedChipIndexRoute,
   AuthedRechargeIndexRoute: AuthedRechargeIndexRoute,
   AuthedAdminCasinosNewRoute: AuthedAdminCasinosNewRoute,
+  AuthedAdminChipIdRoute: AuthedAdminChipIdRoute,
   AuthedAdminPaymentDestinationsNewRoute:
     AuthedAdminPaymentDestinationsNewRoute,
   AuthedAdminRechargeIdRoute: AuthedAdminRechargeIdRoute,
   AuthedAdminRewardsNewRoute: AuthedAdminRewardsNewRoute,
-  AuthedAdminUserGivePointsRoute: AuthedAdminUserGivePointsRoute,
   AuthedAdminCasinosIndexRoute: AuthedAdminCasinosIndexRoute,
+  AuthedAdminChipIndexRoute: AuthedAdminChipIndexRoute,
   AuthedAdminPaymentDestinationsIndexRoute:
     AuthedAdminPaymentDestinationsIndexRoute,
   AuthedAdminRechargeIndexRoute: AuthedAdminRechargeIndexRoute,
   AuthedAdminRewardsIndexRoute: AuthedAdminRewardsIndexRoute,
+  AuthedAdminUserIndexRoute: AuthedAdminUserIndexRoute,
 }
 
 const AuthedRouteWithChildren =
@@ -503,10 +626,12 @@ const AuthedRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthedRoute: AuthedRouteWithChildren,
+  ErrorRoute: ErrorRoute,
   LoginRoute: LoginRoute,
   LogoutRoute: LogoutRoute,
   RewardsRoute: RewardsRoute,
   SignupRoute: SignupRoute,
+  TermsPrivacyRoute: TermsPrivacyRoute,
   UpdatePasswordRoute: UpdatePasswordRoute,
 }
 export const routeTree = rootRouteImport

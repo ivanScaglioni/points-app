@@ -1,5 +1,7 @@
 // src/components/ui/status-badge.tsx
 
+import { cn } from '~/lib/cn'
+
 type StatusBadgeProps = {
     active: boolean
 }
@@ -9,19 +11,34 @@ export function StatusBadge({
 }: StatusBadgeProps) {
     return (
         <div
-            className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${active
-                    ? 'bg-green-500/10 text-green-400'
-                    : 'bg-red-500/10 text-red-400'
-                }`}
+            className={cn(
+                `
+                inline-flex
+                items-center
+                gap-2
+                rounded-full
+                px-3
+                py-1
+                text-xs
+                font-semibold
+                `,
+                active
+                    ? 'bg-success/10 text-success'
+                    : 'bg-destructive/10 text-destructive',
+            )}
         >
             <div
-                className={`mr-2 h-2 w-2 rounded-full ${active
-                        ? 'bg-green-400'
-                        : 'bg-red-400'
-                    }`}
+                className={cn(
+                    'h-2 w-2 rounded-full',
+                    active
+                        ? 'bg-success'
+                        : 'bg-destructive',
+                )}
             />
 
-            {active ? 'Activo' : 'Inactivo'}
+            {active
+                ? 'Activo'
+                : 'Inactivo'}
         </div>
     )
 }

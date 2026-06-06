@@ -11,14 +11,16 @@ export function Card({
     return (
         <div
             className={cn(
-                [
-                    'rounded-3xl',
-                    'border border-border',
-                    'bg-card',
-                    'text-card-foreground',
-                    'shadow-sm',
-                    'transition-all duration-200',
-                ],
+                `
+                rounded-lg
+                border
+                border-border
+                bg-card
+                text-card-foreground
+                card-shadow
+                transition-all
+                duration-200
+                `,
                 className,
             )}
             {...props}
@@ -32,7 +34,10 @@ export function CardContent({
 }: React.HTMLAttributes<HTMLDivElement>) {
     return (
         <div
-            className={cn('p-6', className)}
+            className={cn(
+                'p-4 sm:p-5',
+                className,
+            )}
             {...props}
         />
     )

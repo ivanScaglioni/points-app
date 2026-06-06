@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { getRewardsPageData } from '~/server/getRewardsPageData'
+import { getRewardsPageData } from '~/server/reward/getRewardsPageData'
 
 import { RewardCard } from '~/components/reward/RewardCard'
 

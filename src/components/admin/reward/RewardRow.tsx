@@ -1,7 +1,7 @@
 // src/components/admin/RewardRow.tsx
 
 import { useState } from 'react'
-import { toggleReward } from '../../../server/toggleReward'
+import { toggleReward } from '../../../server/reward/toggleReward'
 import type { Reward } from '../../../types/reward'
 
 type Props = {

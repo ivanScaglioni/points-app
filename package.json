@@ -7,7 +7,9 @@
     "dev": "vite dev",
     "build": "vite build",
     "start": "pnpx srvx --prod -s ../client dist/server/server.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +32,7 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.36.3",
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/eslint-plugin-query": "^5.100.5",
     "@types/react": "^19.0.8",
@@ -37,6 +40,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "tailwindcss": "^4.2.2",
     "typescript": "^6.0.2",
-    "vite": "^8.0.0"
+    "vite": "^8.0.0",
+    "wrangler": "^4.90.0"
   }
 }

@@ -5,7 +5,7 @@ import { useMutation }
     from '../../../hooks/useMutation'
 
 import { takeRecharge }
-    from '../../../server/takeRecharge'
+    from '../../../server/recharge/takeRecharge'
 
 type Props = {
     recharge: any

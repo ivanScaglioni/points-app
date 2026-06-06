@@ -12,10 +12,6 @@ export function HeroSection() {
 
             <div className="container-app py-24 md:py-32">
                 <div className="mx-auto max-w-5xl text-center">
-                    {/* BADGE */}
-                    <div className="mb-6 inline-flex items-center rounded-full border border-border bg-secondary px-4 py-2 text-sm text-muted-foreground">
-                        Plataforma de rewards y beneficios
-                    </div>
 
                     {/* TITLE */}
                     <h1 className="text-balance text-5xl font-bold tracking-tight md:text-7xl">
@@ -50,23 +46,7 @@ export function HeroSection() {
                         </Link>
                     </div>
 
-                    {/* STATS */}
-                    <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                        {[
-                            'Rewards exclusivos',
-                            'Recargas rápidas',
-                            'Puntos automáticos',
-                        ].map((item) => (
-                            <div
-                                key={item}
-                                className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur"
-                            >
-                                <p className="text-sm font-medium text-muted-foreground">
-                                    {item}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
+                
                 </div>
             </div>
         </section>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { updatePassword } from '~/server/updatePassword'
+import { supabase } from '~/utils/supabase.client'
 
 import { AuthCard } from '~/components/ui/AuthCard'
 import { Input } from '~/components/ui/Input'
@@ -35,9 +35,12 @@ function UpdatePasswordPage() {
     try {
       setLoading(true)
 
-      await updatePassword({
-        data: { password },
+      // 🔥 ESTO ES LO IMPORTANTE
+      const { error } = await supabase.auth.updateUser({
+        password,
       })
+
+      if (error) throw error
 
       setMessage('Contraseña actualizada')
 
@@ -64,6 +67,7 @@ function UpdatePasswordPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="new-password"
             />
           </div>
 
@@ -73,6 +77,7 @@ function UpdatePasswordPage() {
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              autoComplete="new-password"
             />
           </div>
 

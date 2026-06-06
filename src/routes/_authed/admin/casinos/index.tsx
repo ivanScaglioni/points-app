@@ -13,7 +13,7 @@ import {
     CheckCircleIcon,
 } from '@heroicons/react/24/outline'
 
-import { getCasinos } from '~/server/getCasinos'
+import { getCasinos } from '~/server/casino/getCasinos'
 
 import {
     Card,
@@ -26,7 +26,7 @@ import { useMutation } from '~/hooks/useMutation'
 
 import {
     toggleCasinoStatus,
-} from '~/server/toggleCasinoStatus'
+} from '~/server/casino/toggleCasinoStatus'
 
 export const Route =
     createFileRoute(

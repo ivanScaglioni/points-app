@@ -11,14 +11,21 @@ export function DashboardCard({
     return (
         <div
             className={cn(
-                [
-                    'rounded-3xl',
-                    'border border-border',
-                    'bg-card',
-                    'p-6',
-                    'shadow-sm',
-                    'transition-all duration-200',
-                ],
+                `
+                overflow-hidden
+
+                rounded-2xl
+
+                border
+                border-border
+
+                bg-card
+
+                shadow-sm
+
+                transition-all
+                duration-200
+                `,
                 className,
             )}
             {...props}

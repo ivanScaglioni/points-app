@@ -1,7 +1,7 @@
 // src/routes/_authed/transactions.tsx
 
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { getMyTransactions } from '../../server/getMyTransactions'
+import { getMyTransactions } from '../../server/user/getMyTransactions'
 import { useRouter } from '@tanstack/react-router'
 import { TransactionItem } from '~/components/ui/TransactionItem'
 
@@ -83,7 +83,7 @@ function TransactionsPage() {
                         </div>
                     ) : (
                         <div className="space-y-4">
-                            {transactions.map((tx) => {
+                            {transactions.map((tx:any) => {
                                 const reward = Array.isArray(tx.reward)
                                     ? tx.reward[0]
                                     : tx.reward

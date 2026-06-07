@@ -1,14 +1,6 @@
 import { createServerFn } from '@tanstack/react-start'
 import { getSupabaseServerClient } from '~/utils/supabase.server'
 
-
-const isProd = process.env.NODE_ENV === "production"
-
-const redirectTo = isProd
-    ? "https://fenixfichas.com/update-password"
-    : "http://localhost:3000/update-password"
-
-
 export const resetPassword = createServerFn()
     .inputValidator((data: { email: string }) => data)
     .handler(async ({ data }) => {
@@ -16,8 +8,12 @@ export const resetPassword = createServerFn()
 
         const { error } =
             await supabase.auth.resetPasswordForEmail(data.email, {
-                redirectTo
+                redirectTo: `${process.env.PUBLIC_APP_URL}/update-password`,
             })
 
-        return { error: error?.message ?? null }
+        if (error) {
+            throw new Error(error.message)
+        }
+
+        return { success: true }
     })

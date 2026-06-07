@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { supabase } from '~/utils/supabase.client'
-
 import { AuthCard } from '~/components/ui/AuthCard'
 import { Input } from '~/components/ui/Input'
 import { Label } from '~/components/ui/Label'
 import { Button } from '~/components/ui/Button'
+import { updatePasswordClient } from '~/utils/updatePassword'
+
+
 
 export const Route = createFileRoute('/update-password')({
   component: UpdatePasswordPage,
@@ -13,6 +14,7 @@ export const Route = createFileRoute('/update-password')({
 
 function UpdatePasswordPage() {
   const navigate = useNavigate()
+
 
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -35,26 +37,19 @@ function UpdatePasswordPage() {
     try {
       setLoading(true)
 
-      // 🔥 ESTO ES LO IMPORTANTE
-      const { error } = await supabase.auth.updateUser({
-        password,
-      })
-
-      if (error) throw error
+      await updatePasswordClient(password)
 
       setMessage('Contraseña actualizada')
 
       setTimeout(() => {
         navigate({ to: '/login' })
       }, 1200)
-
     } catch (err: any) {
       setMessage(err.message ?? 'Error')
     } finally {
       setLoading(false)
     }
   }
-
   return (
     <main className="flex min-h-screen items-center justify-center">
       <AuthCard title="Actualizar contraseña">
@@ -67,7 +62,6 @@ function UpdatePasswordPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              autoComplete="new-password"
             />
           </div>
 
@@ -77,7 +71,6 @@ function UpdatePasswordPage() {
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              autoComplete="new-password"
             />
           </div>
 

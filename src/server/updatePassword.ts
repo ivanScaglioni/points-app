@@ -2,6 +2,7 @@ import { createServerFn } from '@tanstack/react-start'
 import { getSupabaseServerClient } from '~/utils/supabase.server'
 import { redirect } from '@tanstack/react-router'
 
+
 export const updatePassword = createServerFn()
     .inputValidator((data: { password: string }) => data)
     .handler(async ({ data }) => {

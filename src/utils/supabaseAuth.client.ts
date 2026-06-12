@@ -8,6 +8,6 @@ export async function updatePassword(password: string) {
 
 export async function resetPassword(email: string) {
     return supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: 'http://localhost:3000/update-password',
+        redirectTo: `${process.env.PUBLIC_APP_URL}/update-password`,
     })
 }

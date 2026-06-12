@@ -21,6 +21,7 @@ export const approveChip =
                 supabase,
             )
 
+
             const { error } =
                 await supabase.rpc(
                     'approve_chip',

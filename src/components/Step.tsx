@@ -28,7 +28,7 @@ const steps = [
 
     {
         number: '04',
-        title: 'Ganás puntos y rewards',
+        title: 'Ganás puntos y canjealos',
         description:
             'Acumulá puntos automáticamente y canjealos por beneficios exclusivos dentro de la plataforma.',
         image:

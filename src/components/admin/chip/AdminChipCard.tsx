@@ -21,7 +21,7 @@ export function AdminChipCard({
 
         onSuccess: async () => {
             router.navigate({
-                to: '/admin/chips/$id',
+                to: '/admin/chip/$id',
 
                 params: {
                     id: chip.id,
